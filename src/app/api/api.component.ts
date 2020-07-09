@@ -1,16 +1,17 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { NestedTreeControl } from '@angular/cdk/tree';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatSidenav} from '@angular/material/sidenav';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
-
 import { API } from '../api';
-import { Title } from '@angular/platform-browser';
 import { GlobalService } from '../global.service';
+//import { GoogleAnalyticsService } from './../google-analytics.service';
+
+
+
 
 @Component({
   selector: 'app-api',
@@ -23,8 +24,8 @@ export class ApiComponent implements OnInit {
   currentSelection: string;
   currentAPIText: string;
   currentAPILink: string;
-  scrollCounter:number=0;
-  scrollThreshold:number=20;
+  scrollCounter: number = 0;
+  scrollThreshold: number = 20;
   segments: UrlSegment[];
   fragment: string;
 
@@ -72,10 +73,12 @@ export class ApiComponent implements OnInit {
   grippy: ElementRef;
 
   constructor(private http: HttpClient,
-              private router: Router,
-              private route: ActivatedRoute,
-              private title: Title,
-              private globalService: GlobalService) { }
+    private router: Router,
+    private route: ActivatedRoute,
+    private title: Title,
+    private globalService: GlobalService
+    //private googleAnalyticsService: GoogleAnalyticsService
+    ) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
@@ -160,10 +163,10 @@ export class ApiComponent implements OnInit {
 
         this.loadSelectedAPI();
       },
-      error => {
-        console.error(error);
-        this.globalService.resetLoading();
-      });
+        error => {
+          console.error(error);
+          this.globalService.resetLoading();
+        });
     }
   }
 
@@ -188,7 +191,7 @@ export class ApiComponent implements OnInit {
         this.expandNodes(a[0].name);
       } else {
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], {replaceUrl: true});
+        this.router.navigate(['PageNotFound'], { replaceUrl: true });
       }
     }
   }
@@ -210,12 +213,16 @@ export class ApiComponent implements OnInit {
 
       this.globalService.resetLoading();
     },
-    error => {
-      console.error(error);
-      this.globalService.resetLoading();
+      error => {
+        console.error(error);
+        this.globalService.resetLoading();
 
-      this.router.navigate(['PageNotFound'], {replaceUrl: true})
-    });
+        this.router.navigate(['PageNotFound'], { replaceUrl: true })
+      });
+  }
+
+  sendEvent() {
+    //this.googleAnalyticsService.eventEmitter('Button click', 'API- Github Source', this.currentAPILink)
   }
 
   createRouterLink(url: string) {

@@ -1,43 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule, SecurityContext } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MarkdownModule } from 'ngx-markdown';
-import { ClipboardModule } from 'ngx-clipboard';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatToolbarModule} from '@angular/material/toolbar';
-import { MatSidenavModule} from '@angular/material/sidenav';
-import { MatListModule} from '@angular/material/list';
-import { MatButtonModule} from '@angular/material/button';
-import { MatIconModule} from '@angular/material/icon';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatCardModule} from '@angular/material/card';
-
-import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTreeModule } from '@angular/material/tree';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClipboardModule } from 'ngx-clipboard';
+import { MarkdownModule } from 'ngx-markdown';
+import { ApiComponent } from './api/api.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DialogComponent } from './dialog/dialog.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { GettingStartedComponent } from './getting-started/getting-started.component';
-import { TutorialComponent } from './tutorial/tutorial.component';
-import { ApiComponent } from './api/api.component';
-import { TocComponent } from './toc/toc.component';
-import { InstallComponent } from './install/install.component';
 import { CommunityComponent } from './community/community.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SnackbarComponent } from './snackbar/snackbar.component';
+import { DialogComponent } from './dialog/dialog.component';
 import { ExampleComponent } from './example/example.component';
-import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
-import { SlackFormComponent } from './slack-form/slack-form.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
+import { InstallComponent } from './install/install.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchResultComponent } from './search-result/search-result.component';
-import { SecurityContext } from '@angular/core'
+import { SearchComponent } from './search/search.component';
+import { SlackFormComponent } from './slack-form/slack-form.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
+import { TocComponent } from './toc/toc.component';
+import { TutorialComponent } from './tutorial/tutorial.component';
+import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
+
+
 
 @NgModule({
   declarations: [
