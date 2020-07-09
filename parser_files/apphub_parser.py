@@ -168,7 +168,7 @@ def create_json(output_path, apphub_path):
     json_struct.append({'displayName': 'Overview', 'name': 'overview.md'})
     exclude_prefixes = ['_', '.']
     namedict = extractReadMe(output_path, apphub_path)
-    for d in os.listdir(output_path):
+    for d in sorted(os.listdir(output_path)):
         child_list = []
         parent_json_obj = {}
         if os.path.isdir(os.path.join(output_path, d)):

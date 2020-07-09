@@ -1,12 +1,14 @@
 import { Component, OnInit,
   HostBinding, HostListener, ElementRef, QueryList, ViewChildren, ViewChild, AfterViewInit, ChangeDetectorRef, Inject} from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationStart, NavigationEnd, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
 import { DialogComponent} from '../dialog/dialog.component'
 import { GlobalService } from '../global.service';
 import { BehaviorSubject } from 'rxjs';
 import { DOCUMENT } from '@angular/common'
+
+declare let gtag: Function;
 
 @Component({
   selector: 'app-navbar',
@@ -78,6 +80,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
+    });
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        gtag('config', 'UA-170607403-1',
+          {
+            'page_path': event.urlAfterRedirects
+          }
+        );
+      }
     });
   }
 
